@@ -1,0 +1,47 @@
+.credit-card {
+  display: flex;
+  /* background: url("../../../assets/images/card.svg") no-repeat; */
+  /* background-size: 100% 100%; */
+  /* background-repeat: ; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 13px 18px;
+  border-radius: 21px;
+  justify-content: space-between;
+  margin-right: 10px;
+  background-color: #535cc3;
+}
+
+.credit-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.bankName {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.bankBalance {
+  font-size: 12px;
+  color: #fff;
+}
+
+.balance {
+  padding-top: 1px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.visa {
+  color: #fff;
+  font-weight: bold;
+}
+
+.question {
+  color: #fff;
+  font-size: 13px;
+}

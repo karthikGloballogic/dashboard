@@ -1,0 +1,38 @@
+.transaction-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.transaction-icon-cover {
+  background-color: #ffe4db;
+  padding: 10px 13px;
+  border-radius: 10px;
+}
+
+.transaction-icon {
+  color: #fe5575;
+}
+
+.transaction-name {
+  font-weight: 500;
+  color: #24274a;
+  font-size: 13px;
+}
+
+.transaction-date,
+.transaction-type {
+  color: #767676;
+  font-size: 11px;
+  padding-top: 5px;
+}
+
+.transaction-price {
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.transaction-type {
+  text-align: end;
+}

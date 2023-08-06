@@ -1,0 +1,36 @@
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+}
+
+input[type="search"] {
+  position: relative;
+  padding: 15px 40px 15px 20px;
+  width: 1px;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: 5px;
+  transition: width 0.4s ease;
+
+  &:focus {
+    width: 400px;
+    border-radius: 9px;
+    outline: 1.5px solid lightgray;
+  }
+}
+
+.search-input:hover {
+  width: 400px;
+  border-radius: 9px;
+  outline: 1.5px solid lightgray;
+}
+
+.search-icon {
+  position: relative;
+  left: -37px;
+  cursor: pointer;
+  color: lightgray;
+  font-size: 25px;
+}

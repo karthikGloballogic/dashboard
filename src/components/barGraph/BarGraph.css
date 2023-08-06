@@ -1,0 +1,49 @@
+.barGraph {
+  margin-right: 15px;
+}
+
+.graph-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.graph-desc {
+  font-size: 13px;
+  /* color: gray; */
+}
+
+.graph-bar {
+  height: 20vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.bar {
+  display: block;
+  width: 33px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.label {
+  margin: 0;
+  font-size: 12px;
+}
+
+.bars-container {
+  display: flex;
+  gap: 20px;
+}
+
+.bar-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.label {
+  text-align: center;
+}

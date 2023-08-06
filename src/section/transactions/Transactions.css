@@ -1,0 +1,119 @@
+.transactions {
+  flex: 0.8;
+  margin-top: 10px;
+}
+
+.transactions p {
+  margin: 0;
+  justify-content: space-between;
+}
+
+.transactions-header h4 {
+  color: #24274a;
+}
+
+/* .credit-card {
+  display: flex;
+  flex: 1;
+  background-image: url("../../assets/images/card.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 13px 18px;
+  border-radius: 21px;
+  justify-content: space-between;
+}
+
+.credit-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.bankName {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.bankBalance {
+  font-size: 12px;
+  color: #fff;
+}
+
+.balance {
+  padding-top: 1px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.visa {
+  color: #fff;
+  font-weight: bold;
+}
+
+.question {
+  color: #fff;
+  font-size: 13px;
+}
+
+.backUI {
+  background-color: #666fca;
+  position: absolute;
+ right: 10px;
+  top: 0px; 
+} */
+
+.transactions-body {
+  margin: 0 10px;
+}
+
+.recent-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.transaction-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.transaction-icon-cover {
+  background-color: #ffe4db;
+  padding: 10px 13px;
+  border-radius: 10px;
+}
+
+.transaction-icon {
+  color: #fe5575;
+}
+
+.transaction-name {
+  font-weight: 500;
+  color: #24274a;
+  font-size: 13px;
+}
+
+.transaction-date,
+.transaction-type {
+  color: gray;
+  font-size: 11px;
+  padding-top: 5px;
+}
+
+.transaction-price {
+  font-weight: 500;
+  font-size: 13px;
+}
+
+label {
+  font-weight: 500;
+  font-size: 12px;
+  color: #24274a;
+}
+
+.ant-modal-confirm-btns .ant-btn-primary {
+  background-color: #ff0000; /* Replace with your desired background color */
+}
