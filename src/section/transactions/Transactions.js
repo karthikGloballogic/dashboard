@@ -5,7 +5,7 @@ import {
   EllipsisOutlined,
   MobileOutlined,
 } from "@ant-design/icons";
-import { Tooltip, Dropdown, Modal, Input, Select } from "antd";
+import { Dropdown, Modal, Input, Select } from "antd";
 import ListCard from "./components/listCard/ListCard";
 import CreditCard from "./components/creditCard/creditCard";
 
@@ -22,12 +22,33 @@ const Transactions = (props) => {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("");
+  const [nameStatus, setNameStatus] = useState("");
+  const [amountStatus, setAmountStatus] = useState("");
+  const [typeStatus, setTypeStatus] = useState("");
 
   const showModal = () => {
     setIsModalOpen(true);
   };
 
   const handleOk = () => {
+    if (!name) {
+      // Display an error message
+      setNameStatus("error");
+      return;
+    }
+
+    if (!amount) {
+      // Display an error message
+      setAmountStatus("error");
+      return;
+    }
+
+    if (!type) {
+      // Display an error message
+      setTypeStatus("error");
+      return;
+    }
+
     let payload = {
       name: name,
       amount: amount,
@@ -42,10 +63,17 @@ const Transactions = (props) => {
     setName("");
     setAmount("");
     setType("");
+    setNameStatus("");
+    setAmountStatus("");
   };
 
   const handleCancel = () => {
     setIsModalOpen(false);
+    setNameStatus("");
+    setAmountStatus("");
+    setName("");
+    setAmount("");
+    setType("");
   };
 
   const handleChange = (value) => {
@@ -76,17 +104,17 @@ const Transactions = (props) => {
       <div className="transactions-body">
         <div className="recent-header">
           <h4>Recent Transactions</h4>
-          <Dropdown
+          {/* <Dropdown
             menu={{
               items,
             }}
             placement="bottomLeft"
             aria-label="Recent Transactions Menu"
-          >
-            <a href="#" onClick={showModal} aria-label="Open Transactions Menu">
-              <EllipsisOutlined tabIndex={0} />
-            </a>
-          </Dropdown>
+          > */}
+          <a href="#" onClick={showModal} aria-label="Open Transactions Menu">
+            <EllipsisOutlined tabIndex={0} onClick={showModal} />
+          </a>
+          {/* </Dropdown> */}
         </div>
         <div className="recent-transaction-body">
           {list.map((item, index) => {
@@ -106,27 +134,31 @@ const Transactions = (props) => {
           <label htmlFor="transactionName">Name</label>
           <Input
             id="transactionName"
-            placeholder="Transaction Name"
+            placeholder={nameStatus.length > 0 ? "Error" : "Transaction Name"}
             style={{ marginBottom: "10px", marginTop: "6px" }}
             value={name}
             onChange={(val) => setName(val.target.value)}
+            status={name.length < 1 ? nameStatus : ""}
           />
           <label htmlFor="transactionAmount">Amount</label>
           <Input
             id="transactionAmount"
-            placeholder="Amount"
+            placeholder={amountStatus.length > 0 ? "Error" : "Amount"}
             style={{ marginBottom: "10px", marginTop: "6px" }}
             value={amount}
+            type="number"
+            status={amount.length < 1 ? amountStatus : ""}
             onChange={(val) => setAmount(val.target.value)}
           />
           <label htmlFor="transactionType">Type</label>
           <Select
             id="transactionType"
-            defaultValue="Debit"
+            defaultValue="Select"
             style={{
               width: "100%",
               marginTop: "6px",
             }}
+            status={typeStatus}
             onChange={handleChange}
             options={[
               {

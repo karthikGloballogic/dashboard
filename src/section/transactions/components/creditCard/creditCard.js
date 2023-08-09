@@ -51,6 +51,7 @@ const CreditCard = () => {
               <QuestionOutlined
                 className="question"
                 aria-label="Question icon"
+                style={{ cursor: "pointer" }}
               />
             </Tooltip>
           </div>
@@ -84,6 +85,7 @@ const CreditCard = () => {
               <QuestionOutlined
                 className="question"
                 aria-label="Question icon"
+                style={{ cursor: "pointer" }}
               />
             </Tooltip>
           </div>

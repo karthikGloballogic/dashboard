@@ -4,7 +4,7 @@ import "./BarGraph.css";
 
 const BarGraph = ({ name, income, desc, color }) => {
   const data = {
-    points: [100, 30, 100, 80, 60, 100, 100],
+    points: [100, 30, 100, 80, 0, 0, 0],
     labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
   };
 
@@ -29,7 +29,7 @@ const BarGraph = ({ name, income, desc, color }) => {
               <div className="bar-holder" key={index} role="bar percentage">
                 <span
                   className="bar"
-                  style={{ backgroundColor: color, height: `${item}px` }}
+                  style={{ backgroundColor: color, height: `40px` }}
                 >
                   &nbsp;
                 </span>

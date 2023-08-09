@@ -6,6 +6,7 @@ const Upgrade = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
   const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("");
 
   const success = () => {
     messageApi.open({
@@ -19,14 +20,28 @@ const Upgrade = (props) => {
     setIsModalOpen(true);
   };
 
+  const isValidEmail = (email) => {
+    // Basic email validation using regular expression
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailPattern.test(email);
+  };
+
   const handleOk = () => {
+    if (!isValidEmail(email)) {
+      setStatus("error");
+      // Display an error message or take appropriate action
+      return;
+    }
+
     setEmail("");
+    setStatus("");
     setIsModalOpen(false);
     success();
   };
 
   const handleCancel = () => {
     setEmail("");
+    setStatus("");
     setIsModalOpen(false);
   };
 
@@ -56,11 +71,12 @@ const Upgrade = (props) => {
         <label htmlFor="email">Email</label>
         <Input
           id="email"
-          placeholder="Email"
+          placeholder={status.length > 0 ? "Error" : "Email"}
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="email"
+          status={status}
         />
       </Modal>
     </div>

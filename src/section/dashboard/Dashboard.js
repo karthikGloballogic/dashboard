@@ -131,7 +131,7 @@ const Dashboard = (props) => {
             <p className="transaction-debt-credit">-$500.00</p>
           </div>
           <div className="spending-overview">
-            <CircularProgressBar percentage={50} color={"#fcad4b"} />
+            <CircularProgressBar percentage={0} color={"#fcad4b"} />
             <p className="desc">50% use for ATM</p>
             <p className="transaction-debt-credit">-$500.00</p>
           </div>
