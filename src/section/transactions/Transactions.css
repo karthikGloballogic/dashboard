@@ -117,3 +117,12 @@ label {
 .ant-modal-confirm-btns .ant-btn-primary {
   background-color: #ff0000; /* Replace with your desired background color */
 }
+.select {
+  width: 100%;
+  height: 30px;
+  margin-top: 10px;
+  border-radius: 7px;
+  padding: 0 7px;
+  border: 1px solid lightgray;
+  /* outline: 1px solid #149fde; */
+}

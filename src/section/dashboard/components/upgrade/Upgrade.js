@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Input, Modal, message } from "antd";
 import "./Upgrade.css";
+import { makeRequest } from "../../../../network/api";
 
 const Upgrade = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,17 +27,23 @@ const Upgrade = (props) => {
     return emailPattern.test(email);
   };
 
-  const handleOk = () => {
+  const handleOk = async () => {
     if (!isValidEmail(email)) {
       setStatus("error");
-      // Display an error message or take appropriate action
       return;
     }
 
-    setEmail("");
-    setStatus("");
-    setIsModalOpen(false);
-    success();
+    try {
+      const response = await makeRequest("subscribe", "POST", { email });
+
+      setEmail("");
+      setStatus("");
+      setIsModalOpen(false);
+      success();
+    } catch (error) {
+      console.error("Error subscribing:", error);
+      // Handle error as needed
+    }
   };
 
   const handleCancel = () => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Transactions.css";
 import {
   QuestionOutlined,
@@ -8,6 +8,7 @@ import {
 import { Dropdown, Modal, Input, Select } from "antd";
 import ListCard from "./components/listCard/ListCard";
 import CreditCard from "./components/creditCard/creditCard";
+import { makeRequest } from "../../network/api";
 
 const sampleData = {
   name: "Mobile Recharge",
@@ -21,16 +22,20 @@ const Transactions = (props) => {
   const [list, setList] = useState([sampleData]);
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
-  const [type, setType] = useState("");
+  const [type, setType] = useState("debit");
   const [nameStatus, setNameStatus] = useState("");
   const [amountStatus, setAmountStatus] = useState("");
   const [typeStatus, setTypeStatus] = useState("");
+
+  useEffect(() => {
+    getTransactionList();
+  }, []);
 
   const showModal = () => {
     setIsModalOpen(true);
   };
 
-  const handleOk = () => {
+  const handleOk = async () => {
     if (!name) {
       // Display an error message
       setNameStatus("error");
@@ -55,16 +60,28 @@ const Transactions = (props) => {
       type: type,
       id: list.length,
     };
-    setList((prev) => {
-      return [...prev, payload];
-    });
+    // setList((prev) => {
+    //   return [...prev, payload];
+    // });
 
-    setIsModalOpen(false);
-    setName("");
-    setAmount("");
-    setType("");
-    setNameStatus("");
-    setAmountStatus("");
+    try {
+      const response = await makeRequest("createTransaction", "POST", {
+        name,
+        amount: parseInt(amount),
+        type,
+      });
+      getTransactionList();
+
+      setIsModalOpen(false);
+      setName("");
+      setAmount("");
+      setType("");
+      setNameStatus("");
+      setAmountStatus("");
+    } catch (error) {
+      console.error("Error subscribing:", error);
+      // Handle error as needed
+    }
   };
 
   const handleCancel = () => {
@@ -76,8 +93,22 @@ const Transactions = (props) => {
     setType("");
   };
 
+  // const handleChange = (value) => {
+  //   setType(value);
+  // };
+
   const handleChange = (value) => {
-    setType(value);
+    setType(value.target.value);
+  };
+
+  const getTransactionList = async () => {
+    try {
+      const response = await makeRequest("transactionList");
+      setList(response);
+    } catch (error) {
+      console.error("Error subscribing:", error);
+      // Handle error as needed
+    }
   };
 
   const items = [
@@ -147,11 +178,12 @@ const Transactions = (props) => {
             style={{ marginBottom: "10px", marginTop: "6px" }}
             value={amount}
             type="number"
+            min={1}
             status={amount.length < 1 ? amountStatus : ""}
             onChange={(val) => setAmount(val.target.value)}
           />
           <label htmlFor="transactionType">Type</label>
-          <Select
+          {/* <Select
             id="transactionType"
             defaultValue="Select"
             style={{
@@ -171,7 +203,20 @@ const Transactions = (props) => {
               },
             ]}
             aria-label="Transaction Type Select"
-          />
+          /> */}
+          <select
+            id="transactionType"
+            className="select"
+            aria-label="Transaction Type"
+            onChange={handleChange}
+          >
+            <option value="credit" aria-label="credit">
+              Credit
+            </option>
+            <option value="debit" aria-label="debit">
+              Debit
+            </option>
+          </select>
         </Modal>
       </div>
     </aside>
